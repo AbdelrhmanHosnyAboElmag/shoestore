@@ -22,8 +22,7 @@ import kotlinx.android.synthetic.main.fragment_shoe_list.*
 class ShoeListFragment : Fragment() {
     lateinit var binding: FragmentShoeListBinding
     private lateinit var viewModel: ShoeViewModel
-    private val args by navArgs<ShoeListFragmentArgs>()
-    var flag=false
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,11 +34,7 @@ class ShoeListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         viewModel = ViewModelProvider(requireActivity())[ShoeViewModel::class.java]
-        if(flag==true){
-            viewModel.addInfo(args.shoeData)
-
-        }
-        Log.d("test", args.shoeData.shoe_name)
+        //viewModel.addInfo(args.shoeData)
         binding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_shoe_list, container, false
         )
@@ -47,17 +42,16 @@ class ShoeListFragment : Fragment() {
             it.findNavController()
                 .navigate(ShoeListFragmentDirections.actionShoeListFragmentToShoeDetailFragment())
         }
-        viewModel.handleshoelist.observe(viewLifecycleOwner, Observer {
+        viewModel.shoedetail.observe(viewLifecycleOwner, Observer {
             Log.d("viewmodel:", "in")
-            for (i in it) {
-                Log.d("viewmodel:", i.shoe_name)
+
                 createAndView(
-                    i.shoe_name,
-                    i.shoe_size,
-                    i.company_name,
-                    i.description
+                    it.shoe_name,
+                    it.shoe_size,
+                    it.company_name,
+                    it.description
                 )
-            }
+
         })
         return binding.root
     }
@@ -96,9 +90,6 @@ class ShoeListFragment : Fragment() {
         return true
     }
 
-    override fun onPause() {
-        super.onPause()
-        flag=true
-    }
+
 
 }

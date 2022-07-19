@@ -36,9 +36,6 @@
         <action
             android:id="@+id/action_shoeListFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
-        <argument
-            android:name="shoe_data"
-            app:argType="com.example.shoestore.model.Shoe" />
 
     </fragment>
     <fragment

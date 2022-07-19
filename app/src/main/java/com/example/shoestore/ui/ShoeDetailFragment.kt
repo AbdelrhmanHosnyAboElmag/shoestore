@@ -35,20 +35,20 @@ class ShoeDetailFragment : Fragment() {
             inflater, R.layout.fragment_shoe_detail, container, false
         )
 
-        binding.viewmodel=viewModel
-        binding.lifecycleOwner=this
-        binding.saveButton.setOnClickListener {view->
-        viewModel.shoedetail.observe(viewLifecycleOwner, Observer {
-            val shoe=Shoe(it.shoe_name,it.company_name,it.shoe_size,it.description)
+        binding.viewmodel = viewModel
+        binding.lifecycleOwner = this
+        binding.saveButton.setOnClickListener { view ->
+            viewModel.shoedetail.observe(viewLifecycleOwner, Observer {
             view.findNavController()
-                .navigate(ShoeDetailFragmentDirections.actionShoeDetailFragmentToShoeListFragment(shoe))
-        })
+               .navigate(ShoeDetailFragmentDirections.actionShoeDetailFragmentToShoeListFragment())
+                viewModel.addInfo(it)
+
+            })
 
         }
 
         return binding.root
     }
-
 
 
 }
