@@ -29,7 +29,7 @@ class ShoeDetailFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        viewModel = ViewModelProvider(this)[ShoeViewModel::class.java]
+        viewModel = ViewModelProvider(requireActivity())[ShoeViewModel::class.java]
 
         val binding: FragmentShoeDetailBinding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_shoe_detail, container, false
