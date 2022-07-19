@@ -9,7 +9,7 @@ import com.example.shoestore.model.Shoe
 
 class ShoeViewModel : ViewModel() {
     val _shoedetail = MutableLiveData<Shoe>()
-    val _handleshoelist = MutableLiveData<ArrayList<Shoe>>()
+    val _handleshoelist = MutableLiveData<ArrayList<Shoe>>(arrayListOf<Shoe>())
     val handleshoelist: LiveData<ArrayList<Shoe>> get() = _handleshoelist
     val shoedetail: LiveData<Shoe> get() = _shoedetail
 
@@ -18,9 +18,8 @@ class ShoeViewModel : ViewModel() {
         _shoedetail.value = Shoe("lets walk shoe","nick","45","its for run")
     }
     fun addInfo(shoe:Shoe){
-//var list=shoedetail.value
-//        list?.add(shoe)
-//    _handleshoelist.value=list!!
-        _handleshoelist.value?.set(0, shoedetail.value!!)
+var list=_handleshoelist.value
+        list?.add(shoe)
+    _handleshoelist.value=list!!
    }
 }

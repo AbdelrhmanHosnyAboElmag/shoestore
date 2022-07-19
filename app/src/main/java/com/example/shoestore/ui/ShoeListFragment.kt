@@ -42,15 +42,17 @@ class ShoeListFragment : Fragment() {
             it.findNavController()
                 .navigate(ShoeListFragmentDirections.actionShoeListFragmentToShoeDetailFragment())
         }
-        viewModel.shoedetail.observe(viewLifecycleOwner, Observer {
+        viewModel.handleshoelist.observe(viewLifecycleOwner, Observer {
             Log.d("viewmodel:", "in")
-
+            for (i in it) {
                 createAndView(
-                    it.shoe_name,
-                    it.shoe_size,
-                    it.company_name,
-                    it.description
+                    i.shoe_name,
+                    i.shoe_size,
+                    i.company_name,
+                    i.description
                 )
+            }
+
 
         })
         return binding.root
@@ -89,7 +91,6 @@ class ShoeListFragment : Fragment() {
         }
         return true
     }
-
 
 
 }
