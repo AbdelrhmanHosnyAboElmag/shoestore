@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="padding_big">20dp</dimen>
+    <dimen name="padding_small">10dp</dimen>
+    <dimen name="welcome_font">80sp</dimen>
+    <dimen name="instruction_font">25sp</dimen>
+
+</resources>
