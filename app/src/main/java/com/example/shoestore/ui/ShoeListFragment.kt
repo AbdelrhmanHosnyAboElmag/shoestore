@@ -33,8 +33,6 @@ class ShoeListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        viewModel = ViewModelProvider(requireActivity())[ShoeViewModel::class.java]
-        //viewModel.addInfo(args.shoeData)
         binding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_shoe_list, container, false
         )
@@ -43,7 +41,6 @@ class ShoeListFragment : Fragment() {
                 .navigate(ShoeListFragmentDirections.actionShoeListFragmentToShoeDetailFragment())
         }
         viewModel.handleshoelist.observe(viewLifecycleOwner, Observer {
-            Log.d("viewmodel:", "in")
             for (i in it) {
                 createAndView(
                     i.shoe_name,
@@ -51,6 +48,7 @@ class ShoeListFragment : Fragment() {
                     i.company_name,
                     i.description
                 )
+                Log.d("viewmodel:", i.shoe_name)
             }
 
 
@@ -79,6 +77,7 @@ class ShoeListFragment : Fragment() {
     }
 
 
+
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         val inflater = inflater
         inflater.inflate(R.menu.menu, menu)
@@ -92,5 +91,10 @@ class ShoeListFragment : Fragment() {
         return true
     }
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        viewModel = ViewModelProvider(requireActivity())[ShoeViewModel::class.java]
+
+    }
 
 }

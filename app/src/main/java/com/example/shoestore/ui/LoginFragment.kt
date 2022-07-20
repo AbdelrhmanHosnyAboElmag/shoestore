@@ -1,22 +1,24 @@
 package com.example.shoestore.ui
 
+import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.Navigation
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.example.shoestore.R
+import com.example.shoestore.cachememory.Cahce
 import com.example.shoestore.databinding.FragmentLoginBinding
 
 class LoginFragment : Fragment() {
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
 
     override fun onCreateView(
@@ -26,6 +28,7 @@ class LoginFragment : Fragment() {
         val binding: FragmentLoginBinding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_login, container, false
         )
+
         binding.loginButton.setOnClickListener {
             if (binding.emailEdittext.text.toString().trim()
                     .isNotEmpty() || binding.passwordEdittext.text.toString().trim().isNotEmpty()

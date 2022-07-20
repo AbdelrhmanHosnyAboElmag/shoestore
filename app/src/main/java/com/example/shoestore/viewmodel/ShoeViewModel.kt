@@ -17,9 +17,7 @@ class ShoeViewModel : ViewModel() {
     {
         _shoedetail.value = Shoe("lets walk shoe","nick","45","its for run")
     }
-    fun addInfo(shoe:Shoe){
-var list=_handleshoelist.value
-        list?.add(shoe)
-    _handleshoelist.value=list!!
+    fun addInfo(){
+        _handleshoelist.value?.add(shoedetail.value!!.copy())
    }
 }

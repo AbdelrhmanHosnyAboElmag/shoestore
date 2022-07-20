@@ -38,11 +38,15 @@ class ShoeDetailFragment : Fragment() {
         binding.viewmodel = viewModel
         binding.lifecycleOwner = this
         binding.saveButton.setOnClickListener { view ->
-            viewModel.shoedetail.observe(viewLifecycleOwner, Observer {
+            viewModel.addInfo()
             view.findNavController()
-               .navigate(ShoeDetailFragmentDirections.actionShoeDetailFragmentToShoeListFragment())
-                viewModel.addInfo(it)
-
+                .navigate(ShoeDetailFragmentDirections.actionShoeDetailFragmentToShoeListFragment())
+        }
+        binding.cancelButton.setOnClickListener { view ->
+            viewModel.shoedetail.observe(viewLifecycleOwner, Observer {
+                view.findNavController()
+                    .navigate(ShoeDetailFragmentDirections.actionShoeDetailFragmentToShoeListFragment())
+                Toast.makeText(context, "no data save", Toast.LENGTH_SHORT).show()
             })
 
         }
